@@ -27,6 +27,7 @@
     "@shopify/koa-shopify-auth": "^4.1.2",
     "@shopify/polaris": "^6.2.0",
     "apollo-boost": "^0.4.9",
+    "axios": "^0.22.0",
     "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
     "graphql": "^14.5.8",
@@ -36,10 +37,14 @@
     "koa-session": "^6.1.0",
     "next": "^10.0.4",
     "next-env": "^1.1.0",
+    "next-redux-wrapper": "^7.0.5",
     "node-fetch": "^2.6.1",
     "react": "^16.10.1",
     "react-apollo": "^3.1.3",
     "react-dom": "^16.10.1",
+    "react-redux": "^7.2.5",
+    "redux": "^4.1.1",
+    "redux-thunk": "^2.3.0",
     "webpack": "^4.44.1"
   },
   "devDependencies": {
