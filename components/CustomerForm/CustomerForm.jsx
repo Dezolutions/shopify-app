@@ -1,18 +1,24 @@
 import { Button, Card, Form, FormLayout, Heading, Layout, TextField } from '@shopify/polaris'
 import React from 'react'
+import CustomerInfo from '../CustomerInfo/CustomerInfo';
+import {useDispatch} from 'react-redux'
+import {setCustomer} from '../../store/actions/storefrontActions'
 
 const CustomerForm = () => {
-
+  const dispatch = useDispatch()
   const [email, setEmail] = React.useState('')
-  const [password, setPassword] = React.useState('')
-
+  const [find, setFind] = React.useState(false)
   const handleEmailChange = React.useCallback(value => setEmail(value), []);
-  const handlePasswordChange = React.useCallback(value => setPassword(value), []);
 
+  const onSubmit = () => {
+    email && dispatch(setCustomer(email))
+    email && setFind(true)
+  }
+  
   return (
     <Layout.Section oneHalf>
       <Card sectioned >
-      <Heading>Customer data</Heading>
+      <Heading>Find Customer</Heading>
         <Form>
           <FormLayout>
             <TextField
@@ -23,18 +29,13 @@ const CustomerForm = () => {
               placeholder="Enter customer email please"
               type="email"
             />
-            <TextField
-              value={password}
-              label="Password"
-              autoComplete="email"
-              onChange={handlePasswordChange}
-              placeholder="Enter customer password please"
-              type="email"
-            />
-            <Button submit>Submit</Button>
+            <Button onClick={onSubmit}>Find</Button>
           </FormLayout>
         </Form>
+        {find  && <CustomerInfo/>}
+        {!email && !find &&  <p>Enter email please</p>}
       </Card>
+      
     </Layout.Section>
   )
 }
