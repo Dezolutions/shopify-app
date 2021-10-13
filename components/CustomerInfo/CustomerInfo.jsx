@@ -2,11 +2,12 @@ import React from 'react'
 import {useQuery} from '@apollo/client'
 import {useSelector} from 'react-redux'
 import {GET_CUSTOMER} from '../../graphlql/queries'
+import { List } from '@shopify/polaris'
 
 const CustomerInfo = () => {
   
   const email =  useSelector(storefrontReducer => storefrontReducer.customerEmail)
-
+  
   try {
     const { loading, error, data } = useQuery(GET_CUSTOMER(email)); 
     
@@ -15,12 +16,12 @@ const CustomerInfo = () => {
     
     if (data)
       return (
-      <ul>
+      <List>
         {
           Object.entries(data.customers.edges[0].node).map(item => 
-            <li key={item[0]}>{item[0]}: {item[1] || 'не указан'}</li>)
+            <List.Item key={item[0]}>{item[0]}: {item[1] || 'не указан'}</List.Item>)
         }
-      </ul>
+      </List>
       )
   
   } catch (error) {
@@ -35,4 +36,4 @@ const CustomerInfo = () => {
   )
 }
 
-export default CustomerInfo
+export default React.memo(CustomerInfo)

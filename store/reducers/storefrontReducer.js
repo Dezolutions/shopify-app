@@ -1,7 +1,5 @@
 const initialState = {
-  customerEmail: '',
-  store: {},
-  product: {}
+  customerEmail: ''
 }
 
 const storefrontApiReducer = (state = initialState, action) => {
@@ -10,16 +8,6 @@ const storefrontApiReducer = (state = initialState, action) => {
       return {
         ...state,
         customerEmail: action.payload
-      }
-    case 'GET_STORE':
-      return {
-        ...state,
-        store: action.payload
-      }
-    case 'SET_PRODUCT':
-      return {
-        ...state,
-        product: action.payload
       }
     default:
       return state;

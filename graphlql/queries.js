@@ -14,3 +14,12 @@ export const GET_CUSTOMER = (email) => gql`
       }
     }
   }`;
+
+export const GET_STORE = gql`
+  query getShop{
+    shop{
+      name,
+      description
+    }
+  }
+`
